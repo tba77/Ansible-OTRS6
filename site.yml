@@ -1,6 +1,6 @@
 ---
   - name: Install and configure OTRS6 Community
-    hosts: "{{ otrs_hosts }}"
+    hosts: "{{ remote_host }}"
     remote_user: root
 
     roles: 
