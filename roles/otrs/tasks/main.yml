@@ -66,7 +66,7 @@
 
 - name: install additional packages
   yum:
-    name: [ "perl-DBD-mysql", "perl-App-cpanminus.noarch", "perl(Text::CSV_XS)", "perl(ModPerl::Util)", "perl(YAML::XS)", "perl(JSON::XS)", "perl(Authen::NTLM)", "perl(Mail::IMAPClient)", "perl(Crypt::Eksblowfish::Bcrypt)", "perl(Encode::HanExtra)" ] 
+    name: [ "mod_ssl", "perl-DBD-mysql", "perl-App-cpanminus.noarch", "perl(Text::CSV_XS)", "perl(ModPerl::Util)", "perl(YAML::XS)", "perl(JSON::XS)", "perl(Authen::NTLM)", "perl(Mail::IMAPClient)", "perl(Crypt::Eksblowfish::Bcrypt)", "perl(Encode::HanExtra)" ] 
     state: present
 
 - name: Install getpagespeed package
