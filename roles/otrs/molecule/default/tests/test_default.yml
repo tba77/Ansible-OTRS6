@@ -1,0 +1,42 @@
+# Molecule managed
+
+---
+package:
+  httpd:
+    installed: true
+    versions:
+    - 2.4.6
+port:
+  tcp:22:
+    listening: true
+    ip:
+    - 0.0.0.0
+  tcp:80:
+    listening: true
+    ip: []
+  tcp:443:
+    listening: true
+    ip: []
+service:
+  httpd:
+    enabled: true
+    running: true
+user:
+  otrs:
+    exists: true
+    uid: 1001
+    gid: 48
+    groups:
+    - apache
+    home: /opt/otrs/
+    shell: /bin/bash
+process:
+  httpd:
+    running: true
+http:
+  http://localhost//otrs/installer.pl:
+    status: 200
+    allow-insecure: false
+    no-follow-redirects: false
+    timeout: 5000
+    body: []

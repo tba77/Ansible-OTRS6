@@ -7,33 +7,39 @@
 
 - name: start ntp service
   service: 
-     name: chronyd 
-     state: started 
-     enabled: yes
+    name: chronyd 
+    state: started 
+    enabled: yes
+  become: true
   
 - name: disable Selinux
   selinux: 
     state: disabled
+  become: true
   
 - name: Copy NTP config file
   template: 
     src: chrony.conf.j2 
     dest: "{{ ntp_dir }}/chrony.conf"
+  become: true
   notify: restart chronyd
 
 - name: Open port 443
-  firewalld:
+  ansible.posix.firewalld:
     service: https
     permanent: true
     state: enabled
+  become: true
 
 - name: Open Port 80
-  firewalld:
+  ansible.posix.firewalld:
     service: http
     permanent: true
     state: enabled
+  become: true
 
 - name: Restart Firewalld
   service: 
     name: firewalld
     state: restarted
+  become: true
